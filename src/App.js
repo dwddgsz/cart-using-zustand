@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { createGlobalStyle } from "styled-components"; 
 import styled from "styled-components";
+import Nav from './layouts/Nav'
 
-const globalStyle = createGlobalStyle`
-
+const GlobalStyle = createGlobalStyle`
 :root {
   --light:#fff;
   --subtitle: #333;
@@ -17,6 +17,10 @@ const globalStyle = createGlobalStyle`
   margin:0;
   padding:0;
   box-sizing:border-box;
+}
+html,
+button {
+  font-family: 'Poppins', 'sans-serif';
 }
 html,
 body {
@@ -41,18 +45,18 @@ img {
 const AppWrapper = styled.div`
   max-width:1440px;
   margin:0 auto;
-  font-family: 'Poppins';
 `
 
 const App = () => {
   return (
-  <globalStyle>
+    <>
+    <GlobalStyle />
     <AppWrapper>
       <BrowserRouter>
-        test
+        <Nav/>
       </BrowserRouter>
     </AppWrapper>
-  </globalStyle>
+    </>
   )
 }
 

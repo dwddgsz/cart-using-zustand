@@ -26,6 +26,12 @@ const NavWrapper = styled.nav`
                 color:var(--light);
             }
         }
+        a {
+                font-size:1.4rem;
+                @media only screen and (min-width:1280px) {
+                    font-size:1.6rem;
+                }
+            }
     }
 `
 

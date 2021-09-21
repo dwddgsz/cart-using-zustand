@@ -18,6 +18,9 @@ const GlobalStyle = createGlobalStyle`
   padding:0;
   box-sizing:border-box;
 }
+html {
+  font-size:62.5%;
+}
 html,
 button {
   font-family: 'Poppins', 'sans-serif';
@@ -44,6 +47,7 @@ img {
 
 const AppWrapper = styled.div`
   max-width:1440px;
+  padding:0 10px;
   margin:0 auto;
 `
 

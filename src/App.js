@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
 *,
 *::before,
-**after {
+*::after {
   margin:0;
   padding:0;
   box-sizing:border-box;
@@ -22,7 +22,9 @@ html {
   font-size:62.5%;
 }
 html,
-button {
+button,
+input,
+textarea {
   font-family: 'Poppins', 'sans-serif';
 }
 html,

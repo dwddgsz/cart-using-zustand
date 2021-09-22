@@ -127,7 +127,7 @@ const ContactForm = () => {
             <label>Subject</label>
             <div className="dropdown">
                 <div className="dropdown__result" onClick={()=>{setIsDropdownOpen(previous=>!previous)}}>
-                    <input type="text" value={selectedOption}/> 
+                    <input type="text" defaultValue={selectedOption}/> 
                     <span className="dropdown__arrow"></span>
                 </div>
                 <div className={`dropdown__options ${isDropdownOpen ? '' : 'hide-dropdown'}`} 

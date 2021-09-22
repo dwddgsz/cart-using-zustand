@@ -5,6 +5,7 @@ import Home from '../layouts/Home';
 import Contact from '../layouts/Contact';
 import AllProducts from '../layouts/AllProducts';
 import Basket from '../layouts/Basket';
+import Footer from './Footer';
 
 const NavWrapper = styled.nav`
     padding-top:8px;
@@ -68,6 +69,7 @@ const Nav = () => {
                 <Home/>  
             </Route>
         </Switch>
+        <Footer/>
         </>
     )
 }

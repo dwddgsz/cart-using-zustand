@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Switch, Link, Route } from 'react-router-dom';
-import Home from '../layouts/Home';
-import Contact from '../layouts/Contact';
-import AllProducts from '../layouts/AllProducts';
-import Basket from '../layouts/Basket';
+import Home from './Home';
+import Contact from './Contact';
+import ProductsPage from './ProductsPage';
+import Basket from './Basket';
 import Footer from './Footer';
 
 const NavWrapper = styled.nav`
@@ -45,7 +45,7 @@ const Nav = () => {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/all-products">All Products</Link>
+                    <Link to="/products">Products</Link>
                 </li>
                 <li>
                     <Link to="/contact">Contact</Link>
@@ -56,8 +56,8 @@ const Nav = () => {
             </ul>
         </NavWrapper>
         <Switch>
-            <Route path="/all-products">
-                <AllProducts/>
+            <Route path="/products">
+                <ProductsPage/>
             </Route>
             <Route path="/contact">
                 <Contact/>

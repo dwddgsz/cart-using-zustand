@@ -1,10 +1,16 @@
 import React from 'react'
+import SectionTitle from '../components/SectionTitle';
+import CardsList from '../components/CardsList';
+import products from '../database/products';
 
 const ProductsPage = () => {
     return (
-        <div>
-            ProductsPage
-        </div>
+        <>
+            <SectionTitle>
+                Full List of Products
+            </SectionTitle>
+            <CardsList cards={products}/>
+        </>
     )
 }
 

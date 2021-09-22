@@ -33,6 +33,8 @@ body {
 ol,
 ul {
   list-style:none;
+  padding:0;
+  margin:0;
 }
 
 a {
@@ -42,6 +44,10 @@ a {
 
 img {
   display:block;
+}
+button {
+  border:none;
+  outline:none;
 }
 `
 

@@ -19,7 +19,7 @@ const Footer = ({children}) => {
     return (
         <FooterWrapper>
             <p>
-                Created by <a href="https://github.com/dwddgsz" target="_blank">Dawid Długosz</a> &copy;  
+                Created by <a href="https://github.com/dwddgsz" target="_blank" rel="noreferrer">Dawid Długosz</a> &copy;  
             </p>
         </FooterWrapper>
     )

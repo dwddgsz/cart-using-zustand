@@ -156,6 +156,69 @@ const BasketWrapper = styled.section`
             }
             }
     }
+    &__email-form {
+        display:flex;
+        flex-direction: column;
+        max-width:300px;
+        margin: 0 auto;
+        label {
+
+        }
+    }
+}
+.container {
+position: relative;
+  display: block;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  user-select: none;
+  cursor: pointer;
+}
+.container input {
+  position: absolute;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: var(--light);
+  border:1px solid var(--dark);
+  border-radius:3px;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: var(--light);
+}
+
+.container input:checked ~ .checkmark {
+  background-color: var(--dark);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    left: 6.5px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: 1px solid var(--light);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
 }
 `
 
@@ -204,6 +267,16 @@ const Basket = () => {
                         <span className="basket-product__trash-bin"><img src={trashSVG} alt="trash"/></span>
                     </li>   
                 </ul>
+
+                <form className="basket__email-form">
+                    <label className="basket__email-">Email</label>
+                    <input type="email"/>
+                    <label class="container">Ive read and accept <a href="/basket">terms</a>
+                    <input type="checkbox"/>
+                    <span class="checkmark"></span>
+                    </label>
+                </form>
+
 
             </BasketWrapper>
         </>

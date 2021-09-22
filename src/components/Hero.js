@@ -41,16 +41,16 @@ const HeroWrapper = styled.section`
         }
 `
 
-const Hero = ({children}) => {
+const Hero = ({children,title,description}) => {
     return (
         <HeroWrapper>
             <div>
                 <div>
                     <h2>
-                        Enjoy best quality
+                        {title}
                     </h2>
                     <p>
-                        Our courses were prepared with care by experienced professionals working for biggest comapnies: Google, Amazon and Intel.
+                        {description}
                     </p>
                 </div>
             </div>

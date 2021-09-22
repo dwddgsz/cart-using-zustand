@@ -23,7 +23,10 @@ const LearningWrapper = styled.div`
 const Home = () => {
     return (
         <>
-            <Hero>
+            <Hero 
+            title={"Enjoy best quality"} 
+            description={"Our courses were prepared with care by experienced professionals working for biggest comapnies: Google, Amazon and Intel."}
+            >
                 <LearningWrapper/>
             </Hero>
             <SectionTitle>

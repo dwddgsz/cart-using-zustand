@@ -19,14 +19,18 @@ const HeroWrapper = styled.section`
             h2 {
                 margin:0;
                 font-size:2.5rem;
+                text-align:center;
                 @media only screen and (min-width:1280px) {
                     font-size:3rem;
+                    text-align:left;
                 }
             }
             p {
                 font-size:2rem;
+                text-align:center;
                 @media only screen and (min-width:1280px) {
                     font-size:2.5rem;
+                    text-align:left;
                 }
             }
         }

@@ -20,10 +20,10 @@ const NavWrapper = styled.nav`
         }
         li:last-child {
             margin-left:auto;
-            padding:7px 20px;
-            border-radius:7px;
-            background-color: var(--dark);
             a {
+                padding:7px 20px;
+                border-radius:7px;
+                background-color: var(--dark);
                 color:var(--light);
             }
         }
@@ -51,7 +51,7 @@ const Nav = () => {
                     <Link to="/contact">Contact</Link>
                 </li>
                 <li>
-                    <Link to="/basket">Basket</Link>
+                    <Link to="/basket">Basket (<span>4</span>)</Link>
                 </li>
             </ul>
         </NavWrapper>

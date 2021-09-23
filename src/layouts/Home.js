@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import learning from '../assets/learning.jpg'
 import SectionTitle from '../components/SectionTitle';
 import CardsList from '../components/CardsList';
-import bestsellers from '../database/bestsellers';
+import products from '../database/products';
 
 
 
@@ -32,7 +32,7 @@ const Home = () => {
             <SectionTitle>
                 Our Bestsellers
             </SectionTitle>
-            <CardsList cards={bestsellers}/>
+            <CardsList cards={products} bestsellers={true}/>
         </>
     )
 }

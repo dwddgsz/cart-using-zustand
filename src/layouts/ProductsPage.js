@@ -9,7 +9,7 @@ const ProductsPage = () => {
             <SectionTitle>
                 Full List of Products
             </SectionTitle>
-            <CardsList cards={products}/>
+            <CardsList cards={products} />
         </>
     )
 }

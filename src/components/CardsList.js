@@ -10,9 +10,16 @@ const CardsListWrapper = styled.ul`
     justify-content: center;
 `
 
-const CardsList = ({cards}) => {
+const CardsList = ({cards, bestsellers=false}) => {
 
-    const renderCards = cards.map(({data,key})=>{
+    let cardsToMap = cards;
+    if(bestsellers) {
+        cardsToMap = cards.filter(card=>{
+            if(card.data.isBestseller) return card;
+        })
+    }
+
+    const renderCards = cardsToMap.map(({data,key})=>{
         return <Card key={key} data={data}/>
     })
 

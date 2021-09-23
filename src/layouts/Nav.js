@@ -51,7 +51,7 @@ const Nav = () => {
                     <Link to="/contact">Contact</Link>
                 </li>
                 <li>
-                    <Link to="/basket">Basket (<span>4</span>)</Link>
+                    <Link to="/basket">Cart (<span>4</span>)</Link>
                 </li>
             </ul>
         </NavWrapper>

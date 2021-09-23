@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SectionTitle from '../components/SectionTitle';
 import authorSVG from '../assets/author.svg'
 import trashSVG from '../assets/trash.svg'
+import useStore from '../store/Store';
 
 
 const BasketWrapper = styled.section`
@@ -249,6 +250,9 @@ cursor: pointer;
 `
 
 const Basket = () => {
+
+    const products = useStore(state=>state.products);
+
     return (
         <>
             <BasketWrapper>
@@ -264,34 +268,25 @@ const Basket = () => {
                     <span></span>
                 </div>
                 <ul className="basket__products-list">
-                    <li className="basket-product">
-                        <h4 className="basket-product__title">Graphics</h4>
-                        <p className="basket-product__author"><span><img src={authorSVG} alt="author"/></span> <span>Adam Smith</span></p>
-                        <span className="basket-product__price">43 $</span>
-                        <span className="basket-product__amount"><span>-</span><span>1</span><span>+</span></span>
-                        <span className="basket-product__trash-bin"><img src={trashSVG} alt="trash"/></span>
-                    </li>   
-                    <li className="basket-product">
-                        <h4 className="basket-product__title">Graphics</h4>
-                        <p className="basket-product__author"><span><img src={authorSVG} alt="author"/></span> <span>Adam Smith</span></p>
-                        <span className="basket-product__price">43 $</span>
-                        <span className="basket-product__amount"><span>-</span><span>1</span><span>+</span></span>
-                        <span className="basket-product__trash-bin"><img src={trashSVG} alt="trash"/></span>
-                    </li>   
-                    <li className="basket-product">
-                        <h4 className="basket-product__title">Graphics</h4>
-                        <p className="basket-product__author"><span><img src={authorSVG} alt="author"/></span> <span>Adam Smith</span></p>
-                        <span className="basket-product__price">43 $</span>
-                        <span className="basket-product__amount"><span>-</span><span>1</span><span>+</span></span>
-                        <span className="basket-product__trash-bin"><img src={trashSVG} alt="trash"/></span>
-                    </li>   
-                    <li className="basket-product">
-                        <h4 className="basket-product__title">Graphics</h4>
-                        <p className="basket-product__author"><span><img src={authorSVG} alt="author"/></span> <span>Adam Smith</span></p>
-                        <span className="basket-product__price">43 $</span>
-                        <span className="basket-product__amount"><span>-</span><span>1</span><span>+</span></span>
-                        <span className="basket-product__trash-bin"><img src={trashSVG} alt="trash"/></span>
-                    </li>   
+
+                {
+                    products.map(({inCart,price,amount,title,author})=>{
+                        if (inCart) {
+                            return (
+                                <li className="basket-product">
+                                <h4 className="basket-product__title">{title}</h4>
+                                <p className="basket-product__author"><span><img src={authorSVG} alt="author"/></span> <span>{author}</span></p>
+                                <span className="basket-product__price">{price} $</span>
+                                <span className="basket-product__amount"><span>-</span><span>{amount}</span><span>+</span></span>
+                                <span className="basket-product__trash-bin"><img src={trashSVG} alt="trash"/></span>
+                                </li>   
+                            )
+                        }
+                    })
+                }
+
+
+ 
                 </ul>
 
                 <form className="basket__email-form">

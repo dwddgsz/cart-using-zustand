@@ -4,6 +4,7 @@ import SectionTitle from '../components/SectionTitle';
 import authorSVG from '../assets/author.svg'
 import trashSVG from '../assets/trash.svg'
 import useStore from '../store/Store';
+import shallow from 'zustand/shallow'
 
 
 const BasketWrapper = styled.section`
@@ -251,7 +252,7 @@ cursor: pointer;
 
 const Basket = () => {
 
-    const products = useStore(state=>state.products);
+    const {products,increase,decrease,remove} = useStore(({products,increase,decrease,remove})=>({products,increase,decrease,remove}));
 
     return (
         <>
@@ -277,8 +278,8 @@ const Basket = () => {
                                 <h4 className="basket-product__title">{title}</h4>
                                 <p className="basket-product__author"><span><img src={authorSVG} alt="author"/></span> <span>{author}</span></p>
                                 <span className="basket-product__price">{price} $</span>
-                                <span className="basket-product__amount"><span>-</span><span>{amount}</span><span>+</span></span>
-                                <span className="basket-product__trash-bin"><img src={trashSVG} alt="trash"/></span>
+                                <span className="basket-product__amount"><span onClick={()=>{decrease(id,amount)}}>-</span><span>{amount}</span><span onClick={()=>increase(id,amount)}>+</span></span>
+                                <span className="basket-product__trash-bin" onClick={()=>{remove(id)}}><img src={trashSVG} alt="trash"/></span>
                                 </li>   
                             )
                         }

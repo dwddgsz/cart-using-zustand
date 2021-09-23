@@ -159,28 +159,54 @@ const BasketWrapper = styled.section`
     &__email-form {
         display:flex;
         flex-direction: column;
-        max-width:300px;
-        margin: 0 auto;
-        label {
-
+        max-width:280px;
+        margin: 30px auto 0;
+        button {
+        height: 40px;
+        line-height: 40px;
+        margin-top:40px;
+        border-radius: 4px;
+        font-weight: 500;
+        background-color: var(--dark);
+        color: var(--light);
+        cursor: pointer;
         }
+    }
+    &__email-label {
+        margin-bottom: 5px;
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+    &__email-input {
+        width: 280px;
+        max-width: 280px;
+        height: 40px;
+        padding-left: 7px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        box-shadow: 1px 6px 10px rgba(0,0,0,.2);
+        font-size: 1.15rem;
     }
 }
 .container {
 position: relative;
-  display: block;
-  padding-left: 28px;
-  margin-bottom: 12px;
-  font-size: 1.4rem;
-  user-select: none;
-  cursor: pointer;
+display: block;
+padding-left: 28px;
+margin-top:12px;
+font-size: 1.4rem;
+user-select: none;
+cursor: pointer;
+    a {
+        font-weight: 700;
+    }
 }
 .container input {
-  position: absolute;
-  height: 0;
-  width: 0;
-  opacity: 0;
-  cursor: pointer;
+position: absolute;
+height: 0;
+width: 0;
+opacity: 0;
+cursor: pointer;
 }
 
 .checkmark {
@@ -269,12 +295,13 @@ const Basket = () => {
                 </ul>
 
                 <form className="basket__email-form">
-                    <label className="basket__email-">Email</label>
-                    <input type="email"/>
-                    <label class="container">Ive read and accept <a href="/basket">terms</a>
-                    <input type="checkbox"/>
-                    <span class="checkmark"></span>
+                    <label className="basket__email-label">Email</label>
+                    <input type="email" className="basket__email-input"/>
+                    <label className="container">Ive read and accept <a href="/basket">terms</a>
+                        <input type="checkbox"/>
+                        <span className="checkmark"></span>
                     </label>
+                    <button type="submit">Buy</button>
                 </form>
 
 

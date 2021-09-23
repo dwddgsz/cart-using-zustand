@@ -270,10 +270,10 @@ const Basket = () => {
                 <ul className="basket__products-list">
 
                 {
-                    products.map(({inCart,price,amount,title,author})=>{
+                    products.map(({inCart,price,amount,title,author,id})=>{
                         if (inCart) {
                             return (
-                                <li className="basket-product">
+                                <li className="basket-product" key={id}>
                                 <h4 className="basket-product__title">{title}</h4>
                                 <p className="basket-product__author"><span><img src={authorSVG} alt="author"/></span> <span>{author}</span></p>
                                 <span className="basket-product__price">{price} $</span>

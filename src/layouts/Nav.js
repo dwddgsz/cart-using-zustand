@@ -43,7 +43,6 @@ const Nav = () => {
 
     let productsInCart = 0;
     products.forEach(product=>{
-        console.log(product.amount);
         productsInCart += parseFloat(product.amount);
     })
 

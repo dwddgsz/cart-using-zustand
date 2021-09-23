@@ -10,13 +10,13 @@ const CardsListWrapper = styled.ul`
     justify-content: center;
 `
 
-const CardsList = ({cards, isBestsellers=false}) => {
+const CardsList = ({cards, areBestsellers = false}) => {
 
     let cardsToMap = cards;
-    if(isBestsellers) {
-        cardsToMap = cards.filter(card=>{
-            if(card.data.isBestseller) return card;
-        })
+    if(areBestsellers) {
+        cardsToMap = [...cards.filter(card=>{
+            if(card.isBestseller) return card;
+        })]
     }
 
     const renderCards = cardsToMap.map((data)=>{

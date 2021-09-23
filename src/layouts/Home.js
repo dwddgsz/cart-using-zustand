@@ -35,7 +35,7 @@ const Home = () => {
             <SectionTitle>
                 Our Bestsellers
             </SectionTitle>
-            <CardsList cards={products} bestsellers={true}/>
+            <CardsList cards={products} areBestsellers={true}/>
         </>
     )
 }

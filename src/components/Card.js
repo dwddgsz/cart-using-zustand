@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import authorSVG from '../assets/author.svg'
 import starSVG from '../assets/star.svg'
+import useStore from '../store/Store'
 
 const CardWrapper = styled.li`
     display:flex;
@@ -30,6 +31,10 @@ const CardWrapper = styled.li`
             background-color: var(--dark);
             color: var(--light);
             cursor:pointer;
+            &:disabled {
+                cursor:auto;
+                background-color: var(--disabled)
+            }
         }
         &__title {
             font-size:1.7rem;
@@ -77,14 +82,17 @@ const CardWrapper = styled.li`
 
 
 const Card = ({data}) => {
-    const {title,description,author,rate,price} = data;
+
+    const addToCart = useStore(state=>state.addToCart);
+
+    const {title,description,author,rate,price,inCart,id} = data;
     return (
         <CardWrapper> 
             <h4 className="card__title">{title}</h4>
             <p className="card__description" title={description}>{description}</p>
             <p className="card__author"><span><img src={authorSVG} alt="author"/></span> <span>{author}</span></p>
             <p className="card__rate-and-price"><span className="card__rate"><img src={starSVG} alt="star"/> {rate}/5</span><span className="card__price">{price} $</span></p>
-            <button className="card__button">Add to cart</button>
+            <button className="card__button" disabled={inCart} onClick={()=>addToCart(id)}>Add to cart</button>
         </CardWrapper>
     )
 }

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import learning from '../assets/learning.jpg'
 import SectionTitle from '../components/SectionTitle';
 import CardsList from '../components/CardsList';
-import products from '../database/products';
+import useStore from '../store/Store';
 
 
 
@@ -21,6 +21,9 @@ const LearningWrapper = styled.div`
 
 
 const Home = () => {
+
+    const products = useStore(state=>state.products)
+
     return (
         <>
             <Hero 

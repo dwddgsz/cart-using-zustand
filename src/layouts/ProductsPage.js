@@ -1,9 +1,12 @@
 import React from 'react'
 import SectionTitle from '../components/SectionTitle';
 import CardsList from '../components/CardsList';
-import products from '../database/products';
+import useStore from '../store/Store';
 
 const ProductsPage = () => {
+
+    const products = useStore(state=>state.products)
+
     return (
         <>
             <SectionTitle>

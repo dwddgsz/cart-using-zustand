@@ -6,6 +6,7 @@ import Contact from './Contact';
 import ProductsPage from './ProductsPage';
 import Basket from './Basket';
 import Footer from './Footer';
+import useStore from '../store/Store';
 
 const NavWrapper = styled.nav`
     padding-top:8px;
@@ -37,6 +38,15 @@ const NavWrapper = styled.nav`
 `
 
 const Nav = () => {
+
+    const products = useStore(state=>state.products);
+
+    let productsInCart = 0;
+    products.forEach(product=>{
+        console.log(product.amount);
+        productsInCart += parseFloat(product.amount);
+    })
+
     return (
         <>
         <NavWrapper>
@@ -51,7 +61,7 @@ const Nav = () => {
                     <Link to="/contact">Contact</Link>
                 </li>
                 <li>
-                    <Link to="/basket">Cart (<span>4</span>)</Link>
+                    <Link to="/basket">Cart (<span>{productsInCart}</span>)</Link>
                 </li>
             </ul>
         </NavWrapper>

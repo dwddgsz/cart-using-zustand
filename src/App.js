@@ -7,7 +7,7 @@ import Nav from './layouts/Nav'
 const GlobalStyle = createGlobalStyle`
 :root {
   --light:#fff;
-  --subtitle: #333;
+  --disabled: #999;
   --dark:#000;
 }
 

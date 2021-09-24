@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import styled from 'styled-components';
 
 
@@ -23,7 +23,7 @@ const ContactFormWrapper = styled.form`
             border-radius:5px;
             outline:none;
             box-shadow: 1px 6px 10px rgba(0,0,0,.2);
-            font-size:1.15rem;
+            font-size:1.3rem;
             @media only screen and (min-width:992px) {
                 width:340px;
                 max-width: 340px;
@@ -34,7 +34,9 @@ const ContactFormWrapper = styled.form`
             }
         }
         textarea {
+            height:60px;
             max-height:100px;
+            padding-top:5px;
         }
     }
     .dropdown {
@@ -113,21 +115,45 @@ const ContactFormWrapper = styled.form`
             background-color: var(--dark);
             color: var(--light);
             cursor:pointer;
+            &:disabled {
+                background-color: var(--disabled);
+                cursor:auto;
+            }
         }
 `
 
 const ContactForm = () => {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOption, setSelectedOption] = useState('Subject');
+    const [contactFormFields, setContactFormFields] = useState({email:'',message:''});
+    const [validFields,setValidFields] = useState(0);
+
+    useEffect(() => {
+        formValidation();
+   }, [contactFormFields,selectedOption])
+
+    const handleForm = (e) => {
+        setContactFormFields({...contactFormFields,[e.target.name]:e.target.value});
+    }
+
+    const formValidation = () => {
+        setValidFields(0);
+        for (const property in contactFormFields) {
+            console.log(contactFormFields[property].replaceAll(' ','').length)
+            if (contactFormFields[property].replaceAll(' ','').length !== 0) setValidFields(state=>state+1);
+          }
+        if (selectedOption !== 'Subject' ) setValidFields(state=>state+1);
+    }
+
 
     return (
-        <ContactFormWrapper>
+        <ContactFormWrapper onSubmit={()=> window.alert('Success')}>
             <div className="form-group">
             <label>Subject</label>
             <div className="dropdown">
                 <div className="dropdown__result" onClick={()=>{setIsDropdownOpen(previous=>!previous)}}>
-                    <input type="text" defaultValue={selectedOption}/> 
+                    <input type="text" value={selectedOption}/> 
                     <span className="dropdown__arrow"></span>
                 </div>
                 <div className={`dropdown__options ${isDropdownOpen ? '' : 'hide-dropdown'}`} 
@@ -144,14 +170,14 @@ const ContactForm = () => {
 
             <div className="form-group">
             <label>Email</label>
-            <input type="email"/>
+            <input value={contactFormFields.email} onChange={handleForm} name="email" type="email"/>
             </div>
 
             <div className="form-group">
             <label>Wiadomość</label>
-            <textarea/>
+            <textarea value={contactFormFields.message} onChange={handleForm} name="message"/>
             </div>
-            <button type="submit">Send</button>
+            <button type="submit" disabled={validFields === 3 ? false : true}>Send</button>
         </ContactFormWrapper>
     )
 }

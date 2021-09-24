@@ -264,7 +264,7 @@ cursor: pointer;
 `
 const Basket = () => {
 
-    const {products,increase,decrease,remove} = useStore(({products,increase,decrease,remove})=>({products,increase,decrease,remove}),shallow);
+    const {products,increase,decrease,remove,reset} = useStore(({products,increase,decrease,remove,reset})=>({products,increase,decrease,remove,reset}),shallow);
     const [areTermsAccepted,setAreTemsAccepted] = useState(false);
     const [email,setEmail] = useState('');
 
@@ -313,7 +313,11 @@ const Basket = () => {
  
                 </ul>
 
-                <form onSubmit={()=>{return window.alert('Proceed with the payment')}} className={`basket__email-form ${productsInCartAmount > 0 ? '' : 'hidden'}`} >
+                <form onSubmit={(e)=>{
+                    e.preventDefault();
+                    reset();
+                    return window.alert('Proceed with the payment')
+                    }} className={`basket__email-form ${productsInCartAmount > 0 ? '' : 'hidden'}`} >
                     <label className="basket__price-label">Total price</label>
                     <input type="number" value={totalValue} disabled className="basket__price-input"/>
                     <label className="basket__email-label">Email</label>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components';
 import SectionTitle from '../components/SectionTitle';
 import authorSVG from '../assets/author.svg'
@@ -172,6 +172,10 @@ const BasketWrapper = styled.section`
         background-color: var(--dark);
         color: var(--light);
         cursor: pointer;
+        &:disabled {
+            background-color: var(--disabled);
+            cursor:auto;
+        }
         }
     }
     &__email-label,
@@ -195,6 +199,10 @@ const BasketWrapper = styled.section`
     &__price-input {
         margin-bottom:15px;
     }
+    &__products-headings.hidden, 
+    &__email-form.hidden {
+        display:none;
+    } 
 }
 .container {
 position: relative;
@@ -257,20 +265,26 @@ cursor: pointer;
 const Basket = () => {
 
     const {products,increase,decrease,remove} = useStore(({products,increase,decrease,remove})=>({products,increase,decrease,remove}),shallow);
+    const [areTermsAccepted,setAreTemsAccepted] = useState(false);
+    const [email,setEmail] = useState('');
 
+
+    let productsInCartAmount = 0;
     let totalValue = 0;
     products.forEach(product=>{
         totalValue += product.amount * product.price;
+        console.log(product.amount > 0)
+        productsInCartAmount = product.amount > 0 ? productsInCartAmount+1 : productsInCartAmount;
     })
 
     return (
         <>
             <BasketWrapper>
                 <SectionTitle>
-                    Basket
+                    {productsInCartAmount > 0 ? 'Cart' : 'Your cart is empty'}
                 </SectionTitle>
-                <h3 className="basket__subtitle">After purchase You will receive activation code by email in 2 hours</h3>
-                <div className="basket__products-headings">
+                <h3 className="basket__subtitle">{productsInCartAmount > 0 ? 'After purchase You will receive activation code by email in 2 hours' : ''}</h3>
+                <div className={`basket__products-headings ${productsInCartAmount > 0 ? '' : 'hidden'}`}>
                     <span>Title</span>
                     <span>Author</span>
                     <span>Price</span>
@@ -299,16 +313,16 @@ const Basket = () => {
  
                 </ul>
 
-                <form className="basket__email-form">
+                <form onSubmit={()=>{return window.confirm('Proceed with the payment')}} className={`basket__email-form ${productsInCartAmount > 0 ? '' : 'hidden'}`} >
                     <label className="basket__price-label">Total price</label>
                     <input type="number" value={totalValue} disabled className="basket__price-input"/>
                     <label className="basket__email-label">Email</label>
-                    <input type="email" className="basket__email-input"/>
+                    <input type="email" value={email} onInput={(e)=>{setEmail(e.target.value)}} className="basket__email-input"/>
                     <label className="container">Ive read and accept <a href="/basket">terms</a>
-                        <input type="checkbox"/>
+                        <input type="checkbox" onInput={(e)=>{setAreTemsAccepted(e.currentTarget.checked)}}/>
                         <span className="checkmark"></span>
                     </label>
-                    <button type="submit">Buy</button>
+                    <button type="submit" disabled={!areTermsAccepted || email.replace(' ','').length == 0}>Buy</button>
                 </form>
 
 

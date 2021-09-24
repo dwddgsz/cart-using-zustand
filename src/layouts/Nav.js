@@ -77,6 +77,7 @@ const Nav = () => {
             <Route path="/">
                 <Home/>  
             </Route>
+            <Route component={Home}/>
         </Switch>
         <Footer/>
         </>

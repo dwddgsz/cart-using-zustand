@@ -273,7 +273,6 @@ const Basket = () => {
     let totalValue = 0;
     products.forEach(product=>{
         totalValue += product.amount * product.price;
-        console.log(product.amount > 0)
         productsInCartAmount = product.amount > 0 ? productsInCartAmount+1 : productsInCartAmount;
     })
 

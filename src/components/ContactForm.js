@@ -140,7 +140,6 @@ const ContactForm = () => {
     const formValidation = () => {
         setValidFields(0);
         for (const property in contactFormFields) {
-            console.log(contactFormFields[property].replaceAll(' ','').length)
             if (contactFormFields[property].replaceAll(' ','').length !== 0) setValidFields(state=>state+1);
           }
         if (selectedOption !== 'Subject' ) setValidFields(state=>state+1);

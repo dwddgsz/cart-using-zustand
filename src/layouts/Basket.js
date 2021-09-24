@@ -174,12 +174,14 @@ const BasketWrapper = styled.section`
         cursor: pointer;
         }
     }
-    &__email-label {
+    &__email-label,
+    &__price-label {
         margin-bottom: 5px;
         font-size: 1.3rem;
         font-weight: 500;
     }
-    &__email-input {
+    &__email-input,
+    &__price-input {
         width: 280px;
         max-width: 280px;
         height: 40px;
@@ -189,6 +191,9 @@ const BasketWrapper = styled.section`
         outline: none;
         box-shadow: 1px 6px 10px rgba(0,0,0,.2);
         font-size: 1.15rem;
+    }
+    &__price-input {
+        margin-bottom:15px;
     }
 }
 .container {
@@ -249,10 +254,14 @@ cursor: pointer;
     transform: rotate(45deg);
 }
 `
-
 const Basket = () => {
 
     const {products,increase,decrease,remove} = useStore(({products,increase,decrease,remove})=>({products,increase,decrease,remove}),shallow);
+
+    let totalValue = 0;
+    products.forEach(product=>{
+        totalValue += product.amount * product.price;
+    })
 
     return (
         <>
@@ -291,6 +300,8 @@ const Basket = () => {
                 </ul>
 
                 <form className="basket__email-form">
+                    <label className="basket__price-label">Total price</label>
+                    <input type="number" value={totalValue} disabled className="basket__price-input"/>
                     <label className="basket__email-label">Email</label>
                     <input type="email" className="basket__email-input"/>
                     <label className="container">Ive read and accept <a href="/basket">terms</a>

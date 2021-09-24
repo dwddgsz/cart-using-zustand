@@ -313,7 +313,7 @@ const Basket = () => {
  
                 </ul>
 
-                <form onSubmit={()=>{return window.confirm('Proceed with the payment')}} className={`basket__email-form ${productsInCartAmount > 0 ? '' : 'hidden'}`} >
+                <form onSubmit={()=>{return window.alert('Proceed with the payment')}} className={`basket__email-form ${productsInCartAmount > 0 ? '' : 'hidden'}`} >
                     <label className="basket__price-label">Total price</label>
                     <input type="number" value={totalValue} disabled className="basket__price-input"/>
                     <label className="basket__email-label">Email</label>
@@ -322,7 +322,7 @@ const Basket = () => {
                         <input type="checkbox" onInput={(e)=>{setAreTemsAccepted(e.currentTarget.checked)}}/>
                         <span className="checkmark"></span>
                     </label>
-                    <button type="submit" disabled={!areTermsAccepted || email.replace(' ','').length == 0}>Buy</button>
+                    <button type="submit" disabled={!areTermsAccepted || email.replaceAll(' ','').length === 0}>Buy</button>
                 </form>
 
 

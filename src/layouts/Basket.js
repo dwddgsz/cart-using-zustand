@@ -252,7 +252,7 @@ cursor: pointer;
 
 const Basket = () => {
 
-    const {products,increase,decrease,remove} = useStore(({products,increase,decrease,remove})=>({products,increase,decrease,remove}));
+    const {products,increase,decrease,remove} = useStore(({products,increase,decrease,remove})=>({products,increase,decrease,remove}),shallow);
 
     return (
         <>

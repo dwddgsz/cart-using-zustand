@@ -8,11 +8,11 @@
 
 
 ### (mobile) home page:
-<img src="./readme_assets/mobile.png" width=800 >
+<img src="./readme_assets/mobile.png" width=300 >
 
 
 ### (tablet) home page:
-<img src="./readme_assets/tablet.png" width=800 >
+<img src="./readme_assets/tablet.png" width=400 >
 
 
 ### (desktop) home page:

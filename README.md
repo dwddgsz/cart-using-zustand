@@ -1,7 +1,7 @@
 # Online courses with shopping cart (learning Zustand)
 
 
-[live](https://silly-wiles-773358.netlify.app/)
+[live](https://cart-using-zustand.netlify.app/)
 
 
 ## Views:
